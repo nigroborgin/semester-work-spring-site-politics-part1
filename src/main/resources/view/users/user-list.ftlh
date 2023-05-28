@@ -33,8 +33,15 @@
                         </td>
                         <td>
                             <center>
-                                <a href="/users/${u.id}">
-                                    ${u.username}
+                                <a href="/users/${u.id?string.c}">
+                                    <#if u.username??>
+                                        <#assign usernameLength = u.username?length - 1>
+                                    </#if>
+                                    <#if (usernameLength >= 25)>
+                                        ${u.username?substring(0,25)}...
+                                    <#else>
+                                        ${u.username}
+                                    </#if>
                                 </a>
                             </center>
                         </td>
@@ -46,7 +53,7 @@
                         <td>
                             <center>
                                 <div class="btn-group" role="group" aria-label="Second group">
-                                    <a href="/users/${u.id}/posts">
+                                    <a href="/users/${u.id?string.c}/posts">
                                         <button class="btn btn-outline-success btn-sm">
                                             Show posts
                                         </button>

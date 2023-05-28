@@ -24,14 +24,17 @@
                 <#if post.text??>
                     <#assign postLength = post.text?length - 1>
                 </#if>
+                <#if post.authorOfPost??>
+                    <#assign authorLength = post.authorOfPost?length - 1>
+                </#if>
 
-                <span class="card" style="width: 15rem;">
+                <span class="card" style="width: 18rem;">
                     <#--                    <img class="card-img-top" src=".../100px200/" alt="Card image cap">-->
                     <div class="card-body">
                         <h5 class="card-title">${post.title!}</h5>
                         <p class="card-text">
-                            <#if (postLength >= 50)>
-                                ${post.text?substring(0,50)}...
+                            <#if (postLength >= 60)>
+                                ${post.text?substring(0,60)}...
                             <#else>
                                 ${post.text}
                             </#if>
@@ -45,7 +48,7 @@
                                   role="group"
                                   aria-label="First group">
 
-                                <a href="/posts/${post.id}">
+                                <a href="/posts/${post.id?string.c}">
                                     <button class="btn btn-outline-success">
                                         Read
                                     </button>
@@ -53,7 +56,7 @@
 
                                 <#if showEdit>
                                     &nbsp;
-                                    <a href="/posts/${post.id}/edit">
+                                    <a href="/posts/${post.id?string.c}/edit">
                                         <button class="btn btn-outline-secondary">
                                             Edit
                                         </button>
@@ -62,7 +65,7 @@
 
                                  <#if showDelete>
                                      &nbsp;
-                                     <form method="post" action="/posts/${post.id}/delete">
+                                     <form method="post" action="/posts/${post.id?string.c}/delete">
                                         <button class="btn btn-outline-danger" type="submit">
                                             Delete
                                         </button>
@@ -73,7 +76,12 @@
                     </div>
 
                     <div class="card-footer bg-transparent border-success">
-                        Author: ${(post.authorOfPost)!''}
+                        Author:
+                        <#if (authorLength >= 25)>
+                            ${post.authorOfPost?substring(0,25)}...
+                        <#else>
+                            ${post.authorOfPost}
+                        </#if>
                     </div>
                 </span>
                 <br>

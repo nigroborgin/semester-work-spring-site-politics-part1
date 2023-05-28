@@ -20,7 +20,7 @@
 
     <#if showDelete>
         <div class="btn-group position-absolute start-50 translate-middle-x" role="group" aria-label="Second group">
-            <form method="post" action="/posts/${postView.id}/delete">
+            <form method="post" action="/posts/${postView.id?string.c}/delete">
                 <button type="submit" class="btn btn-outline-danger">Delete</button>
             </form>
         </div>

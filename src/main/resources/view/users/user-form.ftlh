@@ -16,7 +16,7 @@
             <input type="file" name="picture"/>
             <br>
 
-            ID: ${userView.id}
+            ID: ${userView.id?string.c}
             <br>
 
             <div class="form-group">

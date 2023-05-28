@@ -25,7 +25,7 @@
                  aria-label="Toolbar with button groups">
                 <#if showEdit>
                     <div class="btn-group" role="group" aria-label="Second group">
-                        <a href="/posts/${postView.id}/edit">
+                        <a href="/posts/${postView.id?string.c}/edit">
                             <button type="button" class="btn btn-outline-secondary">
                                 Edit
                             </button>
@@ -35,7 +35,7 @@
                 &nbsp;
                 <#if showDelete>
                     <div class="btn-group" role="group" aria-label="Third group">
-                        <form method="post" action="/posts/${postView.id}/delete">
+                        <form method="post" action="/posts/${postView.id?string.c}/delete">
                             <button type="submit" class="btn btn-outline-danger">Delete</button>
                         </form>
                     </div>

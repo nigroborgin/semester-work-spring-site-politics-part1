@@ -59,7 +59,7 @@
                         <td>
                             <center>
                                 <div class="btn-group" role="group" aria-label="Second group">
-                                    <a href="/books/${book.id}">
+                                    <a href="/books/${book.id?string.c}">
                                         <button class="btn btn-outline-success btn-sm">
                                             More
                                         </button>
@@ -71,7 +71,7 @@
                             <td>
                                 <center>
                                     <div class="btn-group" role="group" aria-label="Third group">
-                                        <a href="/books/${book.id}/edit">
+                                        <a href="/books/${book.id?string.c}/edit">
                                             <button class="btn btn-outline-secondary btn-sm">
                                                 Edit
                                             </button>
@@ -84,7 +84,7 @@
                             <td>
                                 <center>
                                     <div class="btn-group" role="group" aria-label="Fourth group">
-                                        <form method="post" action="/books/${book.id}/delete">
+                                        <form method="post" action="/books/${book.id?string.c}/delete">
                                             <button class="btn btn-outline-danger btn-sm" type="submit">
                                                 Delete
                                             </button>
