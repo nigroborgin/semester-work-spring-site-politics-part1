@@ -16,6 +16,7 @@ import ru.kpfu.itis.shkalin.spring_site_politics.security.CustomUserDetails;
 import ru.kpfu.itis.shkalin.spring_site_politics.util.ConverterUtil;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -36,6 +37,16 @@ public class PostService {
 
         List<PostViewDto> postViewDtoList = postRepository.findAll().stream()
                 .map(this::getPostViewDto)
+                .sorted(new Comparator<PostViewDto>() {
+                    @Override
+                    public int compare(PostViewDto o1, PostViewDto o2) {
+                        if (o1.getId() == o2.getId())
+                            return 0;
+                        else if (o1.getId() < o2.getId())
+                            return 1;
+                        else
+                            return -1;
+                    }})
                 .toList();
 
         if (userSess != null) {
@@ -48,6 +59,7 @@ public class PostService {
 
             }
         }
+
 
         map.put("showNew", true);
         map.put("showEdit", showEdit);
@@ -185,6 +197,16 @@ public class PostService {
             boolean showDelete = false;
             List<PostViewDto> postsByUserId = postRepository.findAllByUser(userId.get()).stream()
                     .map(this::getPostViewDto)
+                    .sorted(new Comparator<PostViewDto>() {
+                        @Override
+                        public int compare(PostViewDto o1, PostViewDto o2) {
+                            if (o1.getId() == o2.getId())
+                                return 0;
+                            else if (o1.getId() < o2.getId())
+                                return 1;
+                            else
+                                return -1;
+                        }})
                     .toList();
 
             if (userSess != null) {
@@ -207,7 +229,6 @@ public class PostService {
             map.put("nameByUser", byUser.getUsername());
         }
     }
-
 
 
     private PostViewDto getPostViewDto(Post post) {
