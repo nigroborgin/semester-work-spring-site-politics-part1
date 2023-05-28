@@ -19,6 +19,14 @@ configurations {
     }
 }
 
+tasks.named<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    archiveClassifier.set("boot")
+}
+
+tasks.named<Jar>("jar") {
+    archiveClassifier.set("")
+}
+
 repositories {
     mavenCentral()
 }
