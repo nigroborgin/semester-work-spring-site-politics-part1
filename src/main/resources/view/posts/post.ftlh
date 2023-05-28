@@ -35,7 +35,7 @@
                 &nbsp;
                 <#if showDelete>
                     <div class="btn-group" role="group" aria-label="Third group">
-                        <form method="post" action="/post/${postView.id}/delete">
+                        <form method="post" action="/posts/${postView.id}/delete">
                             <button type="submit" class="btn btn-outline-danger">Delete</button>
                         </form>
                     </div>
