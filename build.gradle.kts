@@ -4,6 +4,10 @@ plugins {
     id("org.springframework.boot") version "2.7.11"
     id("io.spring.dependency-management") version "1.1.0"
 }
+apply(plugin = "application")
+application {
+    mainClass.set("ru.kpfu.itis.shkalin.spring_site_politics.App")
+}
 
 group = "ru.kpfu.itis.shkalin"
 version = "0.0.1-SNAPSHOT"
@@ -43,8 +47,5 @@ dependencies {
     testImplementation("org.springframework.security:spring-security-test")
 }
 
-//apply(plugin = "application")
-application {
-    mainClass.set("ru.kpfu.itis.shkalin.spring_site_politics.App")
-}
+
 //mainClassName = "ru.kpfu.itis.shkalin.spring_site_politics.App"
